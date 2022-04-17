@@ -12,7 +12,7 @@ https://github.com/wxy2077/djangoBlog/ 也是从上面的项目改过来的。�
 
 做了一些改变：
 
--数据库换成MongoDB(从宝塔面板上下的)
--后台模板选择BootStrap主题模板——AdminLTE
--评论功能使用 []
-[https://www.charmcode.cn/](https://www.charmcode.cn/)
+- 数据库换成MongoDB(从宝塔面板上下的)
+- 后台模板选择BootStrap主题模板——AdminLTE
+- 评论功能使用 []
+[https://www.charmcode.cn/](httpssd://www.charmcode.cn/)
