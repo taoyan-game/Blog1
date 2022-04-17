@@ -14,6 +14,4 @@ https://github.com/wxy2077/djangoBlog/ 也是从上面的项目改过来的。�
 
 - 数据库换成MongoDB(从宝塔面板上下的)
 - 后台模板选择BootStrap主题模板——AdminLTE
-- 评论功能使用 []
-- 
-[https://www.charmcode.sscn/](https://www.charmcode.cn/)
+- 评论功能换成[Valine](https://valine.js.org/)
