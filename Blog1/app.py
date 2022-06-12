@@ -16,8 +16,6 @@ app.debug = True
 application = httpserver(WSGIContainer(app))
 https_cert_file = r"cert.pem"
 https_key_file = r"cert.key"
-server = HTTPServer(application, ssl_options={"certfile": https_cert_file, "keyfile": https_key_file})
+server = HTTPServer(application)
 server.listen(443)
 IOLoop.instance().start()
-if __name__ == '__main__':
-    app.run(host="0.0.0.0", port=8090)

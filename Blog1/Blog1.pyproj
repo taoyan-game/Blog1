@@ -28,10 +28,43 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="app.py" />
-    <Compile Include="app\FlaskClass.py">
+    <Compile Include="app\admin\forms.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="app\admin\views.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="app\admin\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="app\blog\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="app\db\blog.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="app\db\mongo.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="app\db\__init__.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="app\home\views.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="app\home\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="app\setting.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="app\blog\blog.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="app\tools\request.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="app\tools\__init__.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="app\__init__.py">
@@ -622,7 +655,6 @@
     <Content Include="app\static\css\my.css" />
     <Content Include="app\static\css\prism-a11y-dark.css" />
     <Content Include="app\static\css\tocbot.css" />
-    <Content Include="app\static\favicon.ico" />
     <Content Include="app\static\image\0.jpg" />
     <Content Include="app\static\import_export\action_formats.js" />
     <Content Include="app\static\import_export\import.css" />
@@ -727,7 +759,7 @@
     <Content Include="app\templates\banner.html" />
     <Content Include="app\templates\base.html" />
     <Content Include="app\templates\category.html" />
-    <Content Include="app\templates\detail.html" />
+    <Content Include="app\templates\article.html" />
     <Content Include="app\templates\index.html" />
     <Content Include="app\templates\tag.html" />
     <Content Include="requirements.txt" />
@@ -745,8 +777,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="app\" />
+    <Folder Include="app\blog\" />
+    <Folder Include="app\db\" />
     <Folder Include="app\home\" />
     <Folder Include="app\admin\" />
+    <Folder Include="app\static\staticfile\" />
+    <Folder Include="app\tools\" />
     <Folder Include="app\static\" />
     <Folder Include="app\static\admin\" />
     <Folder Include="app\static\admin\css\" />
