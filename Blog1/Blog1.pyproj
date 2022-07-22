@@ -761,6 +761,8 @@
     <Content Include="app\static\webfonts\fa-solid-900.woff2" />
     <Content Include="app\templates\404.html" />
     <Content Include="app\templates\about.html" />
+    <Content Include="app\templates\admin\.html" />
+    <Content Include="app\templates\admin\post.html" />
     <Content Include="app\templates\admin\login.html" />
     <Content Include="app\templates\admin\newtag.html" />
     <Content Include="app\templates\admin\watchtag.html" />
@@ -778,8 +780,6 @@
     <Content Include="app\templates\index.html" />
     <Content Include="app\templates\macros.html" />
     <Content Include="app\templates\tag.html" />
-    <Content Include="cert.key" />
-    <Content Include="cert.pem" />
     <Content Include="requirements.txt" />
   </ItemGroup>
   <ItemGroup>
