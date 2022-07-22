@@ -67,7 +67,7 @@
                 <a href="{% url 'article_tag' tag %}" title="{{ tag.name }}: {{ tag.article_set.all | length }}">
                     <span class="chip center-align waves-effect waves-light
                              {% ifequal pk tag.id %}chip-active{% else %}chip-default{% endifequal %} tag-{% random_num %}" data-tagname="{{ tag.name }}">{{ tag.name }}
-                        <span class="tag-length">{{ tag.article_set.all | length }}</span>
+                        <span class="tag-length">{{ tag.has_this_article }}</span>
                     </span>
                 </a>
                 {% endfor %}
@@ -83,10 +83,10 @@
             {% for article in articles.object_list %}
                 <div class="article tag-post col s12 m6 l4 aos-init" data-aos="zoom-in" style="position: absolute; left: 0px; top: 2411px;">
                 <div class="card">
-                    <a href="/article/{{ article.article_url }}">
+                    <a href="{{ site.SITE_URL }}/article/id/{{ article.bid }}">
                         <div class="card-image tag-image">
 
-                            <img src="{{ article.cover }}" class="responsive-img" alt="{{ article.title }}">
+                            <img src="{{ article.bimg }}" class="responsive-img" alt="{{ article.title }}">
 
                             <span class="card-title">{{ article.title }}</span>
                         </div>
@@ -97,14 +97,14 @@
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>{{ article.add_time }}
+                                <i class="far fa-clock fa-fw icon-date"></i>{{ article.bdate }}
                             </span>
                             <span class="publish-author">
 
                                 <i class="fas fa-bookmark fa-fw icon-category"></i>
 
-                                <a href="{% url 'article_category' article.category %}" class="post-category">
-                                    {{ article.category }}
+                                <a href="/category/id/{{ article.bcategory.id }}" class="post-category">
+                                    {{ article.bcategory.name }}
                                 </a>
 
 
@@ -114,9 +114,9 @@
 
 
                     <div class="card-action article-tags">
-                        {% for tag in  article.tag.all %}
-                        <a href="{% url 'article_tag' tag %}">
-                            <span class="chip tag-color">{{ tag }}</span>
+                        {% for tag in article.tag %}
+                        <a href="{{ site.SITE_URL }}/tag/id/{{ tag.id }}">
+                            <span class="chip tag-color">{{ tag.name }}</span>
                         </a>
                         {% endfor %}
                     </div>
@@ -134,7 +134,7 @@
         <div class="row">
             <div class="col s6 m4 l4">
                 {% if articles.has_previous %}
-                <a href="?{{ articles.previous_page_number.querystring }}" class="left btn-floating btn-large waves-effect waves-light left-color">
+                <a href="/tag/id/{{ article.nowsnumber - 1 }}" class="left btn-floating btn-large waves-effect waves-light left-color">
                     {% else %}
                 <a class="left btn-floating btn-large disabled">
                 {% endif %}
@@ -144,12 +144,12 @@
 
 
             <div class="page-info col m4 l4 hide-on-small-only">
-                <div class="center-align b-text-gray">{{ articles.number }} / {{ articles.pages | last }}</div>
+                <div class="center-align b-text-gray">{{ articles.nowsnumber }} / {{ articles.blogallpages }}</div>
             </div>
 
             <div class="col s6 m4 l4">
                 {% if articles.has_next %}
-                <a href="?{{ articles.next_page_number.querystring }}" class="right btn-floating btn-large waves-effect waves-light right-color">
+                <a href="/tag/id/{{ article.nowsnumber + 1 }}" class="right btn-floating btn-large waves-effect waves-light right-color">
                 {% else%}
                 <a class="right btn-floating btn-large disabled">
                 {% endif %}

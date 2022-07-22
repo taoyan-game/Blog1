@@ -45,7 +45,7 @@
             background-color: #d8f5c1;
         }
 
-        .tagy-10{
+        .tag-10{
             background-color: #def8f8;
         }
 
@@ -62,10 +62,10 @@
             </div>
             <div class="tag-chips">
                 {% for tag in tags %}
-                    <a href="/tags/{{ tag.name }}/" title="{{ tag.name }}: {{ tag.article_set.all | length }}">
+                    <a href="{{ site.SITE_URL }}/tag/id/{{ tag.id }}/article/page/1/" title="{{ tag.name }}: {{ tag.has_this_article }}">
                     <span class="chip center-align waves-effect waves-light
-                             chip-default tag-{% random_num %}" data-tagname="{{ tag.name }}">{{ tag.name }}
-                        <span class="tag-length">{{ tag.article_set.all | length }}</span>
+                             chip-default tag-{{ randomclass.num() }}" data-tagname="{{ tag.name }}">{{ tag.name }}
+                        <span class="tag-length">{{ tag.has_this_article }}</span>
                     </span>
                 </a>
                 {% endfor %}
@@ -92,7 +92,7 @@
 <script type="text/javascript" src="/static/js/jqcloud-1.0.4.min.js"></script>
 <script type="text/javascript">
     $('#tag-wordcloud').jQCloud([{% for tag in tags %}
-    {"text":"{{ tag.name }}","weight":{{ tag.article_set.all |length }},"link":"#"},
+    {"text":"{{ tag.name }}","weight":{{ tag.has_this_article }},"link":"{{ site.SITE_URL }}/tag/id/{{ tag.id }}/article/page/1/"},
     {% endfor %}], {
         autoResize: true
     });

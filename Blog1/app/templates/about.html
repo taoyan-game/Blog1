@@ -16,9 +16,9 @@
                         <div class="post-statis col l4 hide-on-med-and-down aos-init aos-animate"
                              data-aos="zoom-in-right">
 
-                            {% if articles %}
+                            <!-- {% if articles %}
                                 <div class="statis">
-                                    <span class="count"><a href="{% url 'index' %}">{{ articles | length }}</a></span>
+                                    <span class="count"><a href="/">{{ articles }}</a></span>
                                     <span class="name">文章</span>
                                 </div>
 
@@ -34,7 +34,7 @@
                                     <span class="count"><a href="{% url 'tag' %}">{{ tags |length }}</a></span>
                                     <span class="name">标签</span>
                                 </div>
-                            {% endif %}
+                            {% endif %} -->
 
 
                         </div>
@@ -48,10 +48,10 @@
                                     <div class="post-statis hide-on-large-only aos-init aos-animate"
                                          data-aos="zoom-in-right">
 
-                                        {% if articles %}
+                                        <!-- {% if articles %}
                                             <div class="statis">
                                                 <span class="count"><a
-                                                        href="{% url 'index' %}">{{ articles | length }}</a></span>
+                                                        href="">{{ articles | length }}</a></span>
                                                 <span class="name">文章</span>
                                             </div>
 
@@ -68,22 +68,22 @@
                                                         href="{% url 'tag' %}">{{ tags |length }}</a></span>
                                                 <span class="name">标签</span>
                                             </div>
-                                        {% endif %}
+                                        {% endif %} -->
 
                                     </div>
 
-                                    <div class="title">{{ ABOUT_NAME }}</div>
-                                    <div class="career">{{ ABOUT_DESC }}</div>
+                                    <!-- <div class="title">{{ ABOUT_NAME }}</div> -->
+                                    <!-- <div class="career">{{ ABOUT_DESC }}</div> -->
                                     <div class="social-link hide-on-large-only aos-init aos-animate"
                                          data-aos="zoom-in-left">
 
 
-                                        <a href="mailto:{{ SITE_MAIL }}" class="tooltipped" target="_blank"
+                                        <a href="mailto:{{ site.SITE_MAIL }}" class="tooltipped" target="_blank"
                                            data-tooltip="邮件联系我" data-position="top" data-delay="50">
                                             <i class="fas fa-envelope-open"></i>
                                         </a>
 
-                                        <a href="{% url 'archive' %}" class="tooltipped" target="_blank"
+                                        <a href="/archive/page/1" class="tooltipped" target="_blank"
                                            data-tooltip="文章更新动态" data-position="top" data-delay="50">
                                             <i class="far fa-calendar-alt"></i>
                                         </a>
@@ -95,13 +95,13 @@
                             <div class="social-link">
 
 
-                                <a href="mailto:{{ SITE_MAIL }}" class="tooltipped" target="_blank" data-tooltip="邮件联系我"
+                                <a href="mailto:{{ site.SITE_MAIL }}" class="tooltipped" target="_blank" data-tooltip="邮件联系我"
                                    data-position="top" data-delay="50">
                                     <i class="fas fa-envelope-open"></i>
                                 </a>
 
 
-                                <a href="{% url 'archive' %}" class="tooltipped" target="_blank" data-tooltip="文章更新动态"
+                                <a href="/archive/page/1" class="tooltipped" target="_blank" data-tooltip="文章更新动态"
                                    data-position="top" data-delay="50">
                                     <i class="far fa-calendar-alt"></i>
                                 </a>
@@ -110,7 +110,7 @@
                     </div>
 
                     <div class="introduction center-align aos-init aos-animate" data-aos="fade-up">
-                        <h3>站点信息</h3>
+                        <!-- <h3>站点信息</h3>
                         <table>
                             <tr>
                                 <td>站点域名</td>
@@ -125,8 +125,8 @@
                                 <td>出自Paul Graham的《黑客与画家》</td>
                             </tr>
                         </table>
-                        <input type="hidden" name="天空没有痕迹，但鸟儿已经飞过" value="我曾经来过这世界，却不曾与人说过">
-
+                        <input type="hidden" name="天空没有痕迹，但鸟儿已经飞过" value="我曾经来过这世界，却不曾与人说过"> -->
+                        <h1>还没弄好</h1>
                     </div>
 
                     <style type="text/css">
@@ -140,7 +140,7 @@
                         }
                     </style>
 
-                    <div id="postCharts" class="post-charts">
+                    <!-- <div id="postCharts" class="post-charts">
                         <div class="title center-align aos-init aos-animate" data-aos="zoom-in-up">
                             <i class="far fa-bar-chart"></i>&nbsp;&nbsp;文章统计图
                         </div>
@@ -315,7 +315,7 @@
                         postsChart.setOption(postsOption);
                         categoriesChart.setOption(categoriesOption);
                         tagsChart.setOption(tagsOption);
-                    </script>
+                    </script> -->
                 </div>
             </div>
         </div>

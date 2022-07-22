@@ -64,10 +64,10 @@
             </div>
             <div class="tag-chips">
                 {% for i in categories %}
-                <a href="{% url 'article_category' i.name_url %}" title="{{ i.name }}: {{ i.article_set.all | length }}">
+                <a href="{% url 'article_category' i.name_url %}" title="{{ i.name }}: {{ i.has_this_article }}">
                     <span class="chip center-align waves-effect waves-light
-                             {% ifequal pk i.id %}chip-active{% else %}chip-default{% endifequal %} category-{% random_num %}">{{ i.name }}
-                        <span class="tag-length">{{ i.article_set.all | length }}</span>
+                             {% ifequal pk i.id %}chip-active{% else %}chip-default{% endifequal %} category-{{ randomclass.num() }}">{{ i.name }}
+                        <span class="tag-length">{{ i.has_this_article }}</span>
                     </span>
                 </a>
                 {% endfor %}
@@ -83,28 +83,28 @@
             {% for article in articles.object_list %}
                 <div class="article tag-post col s12 m6 l4 aos-init" data-aos="zoom-in" style="position: absolute; left: 0px; top: 2411px;">
                 <div class="card">
-                    <a href="{% url 'detail' article.article_url %}">
+                    <a href="/article/id/{{ article.bid }}">
                         <div class="card-image tag-image">
 
-                            <img src="{{ article.cover }}" class="responsive-img" alt="{{ article.title }}">
+                            <img src="{{ article.bimg }}" class="responsive-img" alt="{{ article.title }}">
 
-                            <span class="card-title">{{ article.title }}</span>
+                            <span class="card-title">{{ article.btitle }}</span>
                         </div>
                     </a>
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
-                            {{ article.desc }}
+                            {{ article.bdesc }}
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>{{ article.add_time }}
+                                <i class="far fa-clock fa-fw icon-date"></i>{{ article.date }}
                             </span>
                             <span class="publish-author">
 
                                 <i class="fas fa-bookmark fa-fw icon-category"></i>
 
-                                <a href="{% url 'article_category' article.category %}" class="post-category">
-                                    {{ article.category }}
+                                <a href="/category/id/{{  }}" class="post-category">
+                                    {{ article.bcategory }}
                                 </a>
 
 
@@ -114,9 +114,9 @@
 
 
                     <div class="card-action article-tags">
-                        {% for tag in  article.tag.all %}
-                        <a href="{% url 'article_tag' tag %}">
-                            <span class="chip tag-color">{{ tag }}</span>
+                        {% for tag in article.btag %}
+                        <a href="/tag/id/{{ tag.id }}/article/page/1">
+                            <span class="chip tag-color">{{ tag.name }}</span>
                         </a>
                         {% endfor %}
                     </div>
@@ -144,7 +144,7 @@
 
 
             <div class="page-info col m4 l4 hide-on-small-only">
-                <div class="center-align b-text-gray">{{ articles.number }} / {{ articles.pages | last }}</div>
+                <div class="center-align b-text-gray">{{ articles.nowsnumber }} / {{ articles.pages | last }}</div>
             </div>
 
             <div class="col s6 m4 l4">
