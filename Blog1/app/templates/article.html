@@ -1,7 +1,5 @@
 {% extends 'base.html' %}
-{% load custom_tag %}
-{% load static %}
-{% block title %}{{ article.title }} | {% endblock %}
+{% block title %}{{ article.title }} |{% endblock %}
 
 {% block banner %}
     <div class="bg-cover pd-header post-cover">
@@ -10,7 +8,7 @@
                 <div class="col s12 m12 l12">
                     <div class="brand">
                         <div class="description center-align post-title">
-                            {{ article.title }}
+                            {{ article.btitle }}
                         </div>
                     </div>
                 </div>
@@ -212,9 +210,9 @@
                             <div class="row tag-cate">
                                 <div class="col s7">
                                     <div class="article-tag">
-                                        {% for tag in  article.tag.all %}
-                                            <a href="{% url 'article_tag' tag %}">
-                                                <span class="chip tag-color">{{ tag }}</span>
+                                        {% for tag in article.btag %}
+                                            <a href="/tag/id/{{ tag.id }}">
+                                                <span class="chip tag-color">{{ tag.name }}</span>
                                             </a>
                                         {% endfor %}
                                     </div>
@@ -222,8 +220,8 @@
                                 <div class="col s5 right-align">
                                     <div class="post-cate">
                                         <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                        <a href="{% url 'article_category' article.category %}" class="post-category">
-                                            {{ article.category }}
+                                        <a href="/category/id/{{ article.bcategory.id }}" class="post-category">
+                                            {{ article.bcategory.name }}
                                         </a>
                                     </div>
                                 </div>
@@ -231,22 +229,22 @@
                             <div class="post-info">
                                 <div class="post-date info-break-policy">
                                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                                    {{ article.add_time | date:'Y-m-d' }}
+                                    {{ article.date }}
                                 </div>
-                                <div class="post-date info-break-policy">
-                                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                                    {{ article.update_time | date:'Y-m-d' }}
-                                </div>
+                                <!-- <div class="post-date info-break-policy"> -->
+                                    <!-- <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp; -->
+                                    <!--jj -->
+                                <!-- </div> -->
                                 <div class="info-break-policy">
                                     <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
-                                    {{ article.click_count }}
+                                    {{ article.bclick_count }}
                                 </div>
                             </div>
                         </div>
                         <hr class="clearfix">
                         <div class="card-content article-card-content">
                             <div id="articleContent">
-                                {{ detail_html | custom_markdown| safe }}
+                                {{ article.bcontents | safe }}
                             </div>
                             <hr/>
                             <div class="reprint" id="reprint-statement">
@@ -257,7 +255,7 @@
                                     </i>
                                 </span>
                                     <span class="reprint-info">
-                                    <a href="{{ SITE_DOMAIN_URL }}" rel="external nofollow noreferrer">梨子</a>
+                                    <a href="{{ SITE_URL }}" rel="external nofollow noreferrer">梨子</a>
                                 </span>
                                 </div>
                                 <div class="reprint__type">
@@ -267,7 +265,7 @@
                                     </i>
                                 </span>
                                     <span class="reprint-info">
-                                    <a href="{{ SITE_DOMAIN_URL }}/article/{{ article.article_url }}">{{ SITE_DOMAIN_URL }}/article/{{ article.article_url }}</a>
+                                    <a href="{{ site.SITE_URL }}/article/{{ article.article_url }}">{{ site.SITE_URL }}/article/{{ article.article_url }}</a>
                                 </span>
                                 </div>
                                 <div class="reprint__notice">
@@ -278,7 +276,7 @@
                                     </span>
                                     <span class="reprint-info">
                                         咳咳想白嫖文章？本文章著作权归作者所有，任何形式的转载都请注明出处。
-                                        <a href="{{ SITE_DOMAIN_URL }}" target="_blank">{{ SITE_DOMAIN_URL }}</a>
+                                        <a href="{{ site.SITE_URL }}" target="_blank">{{ site.SITE_URL }}</a>
                                         !
                                     </span>
                                 </div>
@@ -297,8 +295,8 @@
                                 <div class="post-meta__tag-list" style="display: inline-block;">
 
                                     <div class="article-tag">
-                                        {% for tag in article.tag.all %}
-                                            <a href="/tags/{{ tag.name }}/">
+                                        {% for tag in article.btag %}
+                                            <a href="/tags/{{ tag.id }}/">
                                                 <span class="chip tag-color">{{ tag.name }}</span>
                                             </a>
                                         {% endfor %}
@@ -403,8 +401,8 @@
 
                         var url = document.location.href;
                         newdiv.innerHTML += '<br />'
-                            + '来源: charmcode.cn<br />'
-                            + '文章作者: 王小右<br />'
+                            + '来源: {{ site.SITE_URL }}<br />'
+                            + '文章作者:梨子 <br />'
                             + '文章链接: <a href="' + url + '">' + url + '</a><br />'
                             + '咳咳又想白嫖文章？本文章著作权归作者所有，任何形式的转载都请注明出处。';
 
@@ -415,13 +413,13 @@
                     });
                 </script>
                 <!-- 代码块功能依赖 -->
-                <script type="text/javascript" src="{% static 'codeBlock/codeBlockFuction.js' %}"></script>
+                <script type="text/javascript" src="/static/codeBlock/codeBlockFuction.js"></script>
                 <!-- 代码语言 -->
-                <script type="text/javascript" src="{% static 'codeBlock/codeLang.js' %}"></script>
+                <script type="text/javascript" src="/static/codeBlock/codeLang.js"></script>
                 <!-- 代码块复制 -->
-                <script type="text/javascript" src="{% static 'codeBlock/codeCopy.js' %}"></script>
+                <script type="text/javascript" src="/static/codeBlock/codeCopy.js"></script>
                 <!-- 代码块收缩 -->
-                <script type="text/javascript" src="{% static 'codeBlock/codeShrink.js' %}"></script>
+                <script type="text/javascript" src="/static/codeBlock/codeShrink.js"></script>
                 <!-- 代码块折行 -->
             </div>
             <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
@@ -438,7 +436,7 @@
                 <i class="fas fa-list-ul"></i>
             </a>
         </div>
-        <script src="{% static 'js/tocbot.min.js' %}"></script>
+        <script src="/static/js/tocbot.min.js"></script>
         <script>
             $(function () {
                 tocbot.init({

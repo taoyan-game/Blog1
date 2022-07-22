@@ -1,2 +1,6 @@
 from flask import Flask
-FlaskApp = Flask(__name__)
+
+fapp = Flask(__name__)
+
+import app.home.views
+import app.tools.request

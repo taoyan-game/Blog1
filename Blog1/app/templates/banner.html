@@ -3,7 +3,7 @@
         <div class="col s10 offset-s1 m8 offset-m2 l8 offset-l2">
             <div class="brand">
                 <div class="title center-align">
-                    {{ SITE_TITLE }}
+                    {{ site.SITE_TITLE }}
                 </div>
 
                 <div class="description center-align">
@@ -11,7 +11,7 @@
                     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.9"></script>
                     <script>
                         var typed = new Typed("#typed", {
-                            strings: ['{{ SITE_TYPE_CHINESE }}', '{{ SITE_TYPE_ENGLISH }}'],
+                            strings: ['{{ site.SITE_TYPE_CHINESE }}', '{{ site.SITE_TYPE_ENGLISH }}'],
                             startDelay: 300,
                             typeSpeed: 100,
                             loop: true,

@@ -17,6 +17,7 @@
     <Name>Blog1</Name>
     <RootNamespace>Blog1</RootNamespace>
     <InterpreterId>MSBuild|venv1|$(MSBuildProjectFullPath)</InterpreterId>
+    <SuppressPackageInstallationPrompt>True</SuppressPackageInstallationPrompt>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -28,6 +29,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="app.py" />
+    <Compile Include="app\admin\db.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="app\admin\forms.py">
       <SubType>Code</SubType>
     </Compile>
@@ -43,6 +47,9 @@
     <Compile Include="app\db\blog.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="app\db\blogclass.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="app\db\mongo.py">
       <SubType>Code</SubType>
     </Compile>
@@ -55,7 +62,8 @@
     <Compile Include="app\home\__init__.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="app\setting.py">
+    <Compile Include="server1.py" />
+    <Compile Include="setting.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="app\blog\blog.py">
@@ -643,7 +651,6 @@
     <Content Include="app\static\css\all.css" />
     <Content Include="app\static\css\animate.min.css" />
     <Content Include="app\static\css\aos.css" />
-    <Content Include="app\static\css\buttons.css" />
     <Content Include="app\static\css\detail-comments.css" />
     <Content Include="app\static\css\gitment.css" />
     <Content Include="app\static\css\jqcloud.css" />
@@ -655,6 +662,7 @@
     <Content Include="app\static\css\my.css" />
     <Content Include="app\static\css\prism-a11y-dark.css" />
     <Content Include="app\static\css\tocbot.css" />
+    <Content Include="app\static\favicon.ico" />
     <Content Include="app\static\image\0.jpg" />
     <Content Include="app\static\import_export\action_formats.js" />
     <Content Include="app\static\import_export\import.css" />
@@ -753,15 +761,25 @@
     <Content Include="app\static\webfonts\fa-solid-900.woff2" />
     <Content Include="app\templates\404.html" />
     <Content Include="app\templates\about.html" />
-    <Content Include="app\templates\archive.html" />
+    <Content Include="app\templates\admin\login.html" />
+    <Content Include="app\templates\admin\newtag.html" />
+    <Content Include="app\templates\admin\watchtag.html" />
+    <Content Include="app\templates\admin\tagedit.html" />
+    <Content Include="app\templates\admin\tag.html" />
+    <Content Include="app\templates\admin\home.html" />
+    <Content Include="app\templates\admin\base.html" />
     <Content Include="app\templates\article_category.html" />
     <Content Include="app\templates\article_tag.html" />
     <Content Include="app\templates\banner.html" />
     <Content Include="app\templates\base.html" />
-    <Content Include="app\templates\category.html" />
     <Content Include="app\templates\article.html" />
+    <Content Include="app\templates\archive.html" />
+    <Content Include="app\templates\category.html" />
     <Content Include="app\templates\index.html" />
+    <Content Include="app\templates\macros.html" />
     <Content Include="app\templates\tag.html" />
+    <Content Include="cert.key" />
+    <Content Include="cert.pem" />
     <Content Include="requirements.txt" />
   </ItemGroup>
   <ItemGroup>
@@ -781,9 +799,6 @@
     <Folder Include="app\db\" />
     <Folder Include="app\home\" />
     <Folder Include="app\admin\" />
-    <Folder Include="app\static\staticfile\" />
-    <Folder Include="app\tools\" />
-    <Folder Include="app\static\" />
     <Folder Include="app\static\admin\" />
     <Folder Include="app\static\admin\css\" />
     <Folder Include="app\static\admin\css\vendor\" />
@@ -849,6 +864,9 @@
     <Folder Include="app\static\mdeditor\languages\" />
     <Folder Include="app\static\medias\" />
     <Folder Include="app\static\webfonts\" />
+    <Folder Include="app\templates\admin\" />
+    <Folder Include="app\tools\" />
+    <Folder Include="app\static\" />
     <Folder Include="app\templates\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.Web.targets" />
